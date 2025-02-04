@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Color Factory</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0"></script>
+
+</head>
+<body>
+    <h1>Welcome to the Color Factory</h1>
+    <div>
+        <!--This main section will receive user input-->
+        <section id = "userSection">
+            <p>This page will allow you to mix you favorite colors and create a new one ! </p>
+            <p>Please type down the hexadecimal code of you favorite color and click Save.</p>
+
+            <input type="text" id="colorName" placeholder="Enter a color (#ff0000)">
+            <button type="button" onclick=" saveColor()"> Save </button>
+            <button type="button" onclick=" clearColor()"> Clear color Palette </button>
+            <!--This part will desplay the list of colors the user has input so far-->
+            <ol id="colorList"> 
+                <!--Color will be display here-->
+            </ol>                        
+        </section>
+        <!--This section display results-->
+        <section id = outPutSection>
+            <button type="button" onclick=" mixColors()"> Mix !! </button>
+            <ol id="newColorName"></ol>
+            <p id="resultingColor"> 
+                <!--New colors are added here! -->
+            </p>
+        </section>
+
+        <footer>
+            <p><b>By @JennyKing January 2025 </b></p>
+        </footer>
+    </div>
+    
+</body>
