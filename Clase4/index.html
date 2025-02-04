@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>To Do Lists</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/x-icon" href="img/logo.ico">
+  <script src="script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0"></script>
+</head>
+<body>
+    <section id="titleSec">
+        <h1>クリーン | Your Task Tracker Best Friend</h1>
+        <img src="img/1.jpg"  class="pageLogo">
+    </section>
+
+    <form id ="userForm">
+        <p class = "genText" >Welcome to クリーン, your webpage to keep your schedule Tidy & Manage Tasks.
+            <br>This page will allow you to add, delete and review the task you have completed.
+        </p>
+        <br>
+        <input type="text" id="userInput" placeholder="Add a task (e.g Meow Meow is stinky, Bath Meow Meow!)">
+        <button type="submit">Add task</button>
+        <br><hr>       
+    </form>
+    <section class = "optionSec" style = "background-color: 05808c;">
+        <p > <b>Current Mode:</b></p>
+        <p id="modeDisplay"></p>            
+        <button name="delBtn" class="changeFuncbtn" onclick="ChangeMode(false)">Delete Mode</button>
+        <button name="doneBtn" class="changeFuncbtn" onclick="ChangeMode(true)">Finish Mode</button>
+    </section>
+    <hr>
+    
+    <div class="container">
+        
+        <section class="Verticalsection" name="TaskSec"> 
+            Tasks <hr>
+            <ul name ="taskList"></ul>
+        </section>
+        <section class="Verticalsection" name="DeleteSec">
+            Delete Tasks <hr>
+            <ul name ="deleteList"></ul>
+        </section>
+        <section class="Verticalsection" name="DoneSec">
+            Finished Tasks<hr>
+            <ul name ="doneList"></ul>
+        </section>
+    </div>
+    
+    <footer>
+        <p>Made by @JennyKing | Feb 2025 | Rocket Girls</p>
+    </footer>
+    
+    
+    
+</body>
