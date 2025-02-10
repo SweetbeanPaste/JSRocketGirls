@@ -1,0 +1,4 @@
+1. Add click func to add to deck
+2. delete func (maybe X animation on top of selected card)
+3. soft pc cards
+4. simulate fight (add up the 3 stats from the 3 cards and biggest one win i guess)

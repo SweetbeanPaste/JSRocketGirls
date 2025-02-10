@@ -41,6 +41,7 @@ a{
 .startbtn {
   margin: 10px;
   padding: 15px 30px;
+  height: 100px;width:250px;
   text-align: center;
   text-transform: uppercase;
   font-family: 'Gaegu', bold;
@@ -91,8 +92,14 @@ a{
     padding: 50px;
     background-color: #f09819;
 }
-.gameDeck{
+/* GameDeck is the main Selection Deck */
+.gameDeck{ 
     padding: 50px;
     background-color:aquamarine;
     ;
+}
+/* GamingDeck us the players deck, the one user selected/pc */
+.gamingDeck{
+    display: flex; /* Aligns cards in a row */
+    gap: 10px; /* Automatically sets spacing between cards */
 }

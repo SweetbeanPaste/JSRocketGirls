@@ -49,28 +49,32 @@
     <h2 name="DeckTitle">Deck</h2>
     <section class="carddeck_Section">        
         <div>
-            <!-- <img src="img/Allen.png" class="pjCard" id="PjAllen">
-            <img src="img/Dinara.png" class="pjCard" id="PjDinara">
-            <img src="img/Eliv.png" class="pjCard" id="PjEliv">
-            <img src="img/Urumi.png" class="pjCard" id="PjUrumi">
-            <img src="img/Clith.png" class="pjCard" id="PjClith">
-            <img src="img/Dansu.png" class="pjCard" id="PjDansu">     -->
+            <!--Main selection deck added here-->            
         </div>        
     </section>
     <h2 style="text-align:center;" >Select your team ! Get ready to Fight.</h2>
     <section class="deck_selection"> 
+
         <div id="playerDeck" class="gameDeck">
             <h3>Your Deck</h3>
+            <div id="currentPYdeck" class="gamingDeck">
+                <!--Player cards here-->
+            </div>                
+        </div>
+        <div id="btn_sention">
+            <button class="startbtn" onclick="ready()">Ready</button>
+            <button class="startbtn">Start</button>
+        </div>
 
-            </div>
-        <!--Your deck will be added here-->
-        <button class="startbtn">Start</button>
         <div id="pcDeck" class="gameDeck">
             <h3>Opponent Deck</h3>
+            <div id="currentPCdeck" class="gamingDeck">
+                <!--Remaining Cards will be added here added here-->
+            </div>
         </div>
-        <!--Remaining Cards will be added here added here-->
+        
     </section>
-
+    <br><br><hr>
     <footer>
         @JennyKing | Feb_2025 JS_RocketGirls
         <br>
