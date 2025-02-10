@@ -4,9 +4,16 @@ const names = ["Allen","Dinara","Eliv","Urumi","Clith","Dansu"];
 const charactersDeck = [];
 
 document.addEventListener('DOMContentLoaded', function() {   
-let section = document.getElementsByClassName('carddeck_Section')[0]; 
-section=section.children[0].children
-for (i = 0 ; section.length !=i ;i++) { 
+let section = document.getElementsByClassName('carddeck_Section'); 
+//section=section.children[0].children
+for (i = 0 ; i<=5 ;i++) { 
+    //Creating the deck
+    let newCard = document.createElement("img");
+    newCard.src="img/"+names[i]+".png";
+    newCard.classList.add("pjCard");
+    newCard.id="Pj"+names[i];
+
+    //Creating Object
     let character = {  // each cycle creates a new one
         name: names[i],
         health: getRandom(),
@@ -14,7 +21,9 @@ for (i = 0 ; section.length !=i ;i++) {
         shield: getRandom(),
         imgurl:"img/"+names[i]+".png"
     };
-    section[i].classList.add("flipSide-360");
+    //Assigning powers!
+    newCard.classList.add("slide-top");
+    section[0].appendChild(newCard);
     
     charactersDeck.push(character);
     console.log(character); 

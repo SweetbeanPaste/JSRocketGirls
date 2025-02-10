@@ -25,16 +25,5 @@
     display: flex;
     justify-content: center; /* Centers images horizontally */
     align-items: center; /* Centers images vertically */
-}
-.carddeck_Section img
-{   
-    cursor: pointer;
     gap: 50px;
-    border: 10px solid transparent; 
-    transition: border-color 0.3s ease;
-    
-}
-.carddeck_Section img:hover
-{    
-    border-color:blue;
 }

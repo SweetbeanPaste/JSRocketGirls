@@ -8,6 +8,9 @@ body {
 p{
     margin: 10px 100px;
 }
+footer{
+    margin-top:200px;
+}
 .ruleBullets{
     margin: 10px 100px;
 }
@@ -68,10 +71,28 @@ a{
 .startbtn:active {
   transform: scale(0.95);
 }
-
+/* Rules Sec */
+.ruleList{
+    padding: 50px;
+    background-color: #f09819;
+}
+/* Lore Sec */
+.gameContext{
+    padding: 50px;
+    background-color: #f09819;
+}
 /* Players deck */
 .deck_selection{
     display: flex;
     justify-content: space-between; /* Equal space between items */
 
+}
+.carddeck_Section{
+    padding: 50px;
+    background-color: #f09819;
+}
+.gameDeck{
+    padding: 50px;
+    background-color:aquamarine;
+    ;
 }
