@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Gaegu&display=swap');
+body {
+    font-family: 'Gaegu', bold;
+    font-size: 36px;
+    margin: 10px 96px;
+    padding: 5px;
+}
+p{
+    margin: 10px 100px;
+}
+.ruleBullets{
+    margin: 10px 100px;
+}
+
+/* Navigation bar style */
+.navBar{
+    display: flex;
+    gap:20px;
+    background-color: aqua;    
+}
+
+.navBar li{
+    display: inline;
+    cursor: pointer;
+    font-size: 25px;
+    background-color: yellowgreen;
+    padding: 20px;
+}
+.navBar li:hover{
+    background-color: bisque;
+}
+a{
+    text-decoration: none;
+}
+
+/* Start button */
+/* CSS */
+.startbtn {
+  margin: 10px;
+  padding: 15px 30px;
+  text-align: center;
+  text-transform: uppercase;
+  font-family: 'Gaegu', bold;
+  font-size: 36px;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  border-radius: 10px;
+  display: block;
+  border: 0px;
+  border-radius: 20em;
+  font-weight: 700;
+  box-shadow: 0px 0px 14px -7px #f09819;
+  background-image: linear-gradient(45deg, #FF512F 0%, #F09819  51%, #FF512F  100%);
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.startbtn:hover {
+  background-position: right center;
+  /* change the direction of the change here */
+  color: #fff;
+  text-decoration: none;
+}
+
+.startbtn:active {
+  transform: scale(0.95);
+}
+
+/* Players deck */
+.deck_selection{
+    display: flex;
+    justify-content: space-between; /* Equal space between items */
+
+}

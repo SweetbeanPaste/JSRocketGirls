@@ -3,15 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script src="script.js"></script>
-    <link rel="stylesheet" href="styles.css">
+    <title>Epic Card Battle!</title>
+    <link rel="icon" type="image/x-icon" href="img/logoCard.ico">
+    <script src="scripts/index.js"></script>
+<!--    <script src="scripts/about.js"></script>-->
+    <!--CSS files for styles-->
+    <link rel="stylesheet" href="styles/CardStyles.css">
+    <link rel="stylesheet" href="styles/mainPage.css">
+    <link rel="stylesheet" href="styles/dinamic.css">
     
 </head>
 <body>
-    <div class="cardContainer">
+    <header>
+        <nav class="navBar">
+            <img class="pageLogo" src="img/logoCard.png">
+            <ol>
+                <li><a href="./index.html">Main Page</a></li>
+                <li><a href="./about.html">About the Characters</a></li>
+                
+            </ol>
+        </nav>
+    </header>
 
-    </div>
+    <section> 
+        <h2 name="LoreTitle">Lore...</h2>
+        <p>You have find yourself in another dimension! A wasteland of sorts, 
+        it is plagued with strange entities HIGHLY hostily. In order to stay safe
+        you must play your card wisely, and let the entities destroy themselves instead 
+        of putting your skin at risk.</p>
+        <p>Be smart! read the characters strenghts and weaknessess, plan a winning deck and survive!</p>
+
+    </section>
+    <section>
+        <h2 name="GameRulesTitle">Game Rules</h2>
+        <ol>
+            <li class="ruleBullets">Player can choose 3 card out of the 6 characters</li>
+            <li class="ruleBullets">You may delete a card from your deck by clicking on it</li>
+            <li class="ruleBullets">Player can modify character stats (although that is cheating)</li>
+            <li class="ruleBullets">Once you prepared your deck click on "Battle"! Shall the strongest WIN</li>
+        </ol>
+    </section>
+
+    <h2 name="DeckTitle">Deck</h2>
+    <section class="carddeck_Section">        
+        <div>
+            <img src="img/Allen.png" class="pjCard" id="PjAllen">
+            <img src="img/Dinara.png" class="pjCard" id="PjDinara">
+            <img src="img/Eliv.png" class="pjCard" id="PjEliv">
+            <img src="img/Urumi.png" class="pjCard" id="PjUrumi">
+            <img src="img/Clith.png" class="pjCard" id="PjClith">
+            <img src="img/Dansu.png" class="pjCard" id="PjDansu">    
+        </div>        
+    </section>
+    <h2>Select your team ! Get ready to Fight.</h2>
+    <section class="deck_selection"> 
+        <div class="myDeck">Your Deck</div>
+        <!--Your deck will be added here-->
+        <button class="startbtn">Start</button>
+        <div class="PCDeck">Opponent Deck</div>
+        <!--Remaining Cards will be added here added here-->
+    </section>
     
 </body>
 </html>
