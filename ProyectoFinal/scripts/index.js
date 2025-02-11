@@ -7,6 +7,7 @@ let charactersDeck = []; //While this one reflects the Main desk on screen
 document.addEventListener('DOMContentLoaded', function() {   
 let section = document.getElementsByClassName('carddeck_Section'); 
 //section=section.children[0].children
+
 for (i = 0 ; i<=5 ;i++) { 
     //Creating the deck
     let newCard = document.createElement("img");
@@ -22,7 +23,7 @@ for (i = 0 ; i<=5 ;i++) {
         shield: getRandom(),
         imgurl:"img/"+names[i]+".png"
     };
-    //Assigning powers!
+    //Assigning powers! & addint to screen
     newCard.classList.add("slide-top");
     section[0].appendChild(newCard);
     
@@ -35,6 +36,14 @@ for (i = 0 ; i<=5 ;i++) {
 console.log(charactersDeck_CN);
 localStorage.setItem("charactersDeck", JSON.stringify(charactersDeck_CN)); 
 })
+
+function loadDeck(){
+
+}
+
+function createDeck(){
+    
+}
 
 function getRandom() {
     //Gives a random number to fill in the characters stats

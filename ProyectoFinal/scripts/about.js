@@ -55,13 +55,85 @@ function createClickListener(newCard,character)
     });
 }
 function displayStats(character){
+    //Creates a Table for the stats
+    
+    let container = document.getElementById("character_statTable");
+    container.innerHTML = "<h3>Current Stats</h3>";
 
+    let table = document.createElement("table");
+    let thead = document.createElement("thead");
+    let tbody = document.createElement("tbody");
+
+    // Create table header
+    let headerRow = document.createElement("tr");
+    let headers = ["Stats", "#"];
+    headers.forEach(headerText => {
+        let header = document.createElement("th");
+        header.textContent = headerText;
+        headerRow.appendChild(header);
+    });
+    thead.appendChild(headerRow);
+    table.appendChild(thead);
+
+    // Create table body
+    let stats = [
+        { name: "Health", value: character.health },
+        { name: "Damage", value: character.damage },
+        { name: "Shield", value: character.shield }
+    ];
+
+    stats.forEach(stat => {
+        let row = document.createElement("tr");
+
+        let statNameCell = document.createElement("td");
+        statNameCell.textContent = stat.name;
+        row.appendChild(statNameCell);
+
+        let statValueCell = document.createElement("td");
+        statValueCell.textContent = stat.value;
+        statValueCell.setAttribute("contenteditable", "true"); // Make cell editable
+
+        // Add input event listener for real-time updates
+        statValueCell.addEventListener("input", (event) => {
+            modifyStats(character, stat.name.toLowerCase(), event.target.textContent);
+        });
+
+        // Add keydown event listener for "Enter" key submission
+        statValueCell.addEventListener("keydown", (event) => {
+            if (event.key === "Enter") {
+                event.preventDefault(); // Prevent default behavior (e.g., newline)
+                modifyStats(character, stat.name.toLowerCase(), event.target.textContent);
+                event.target.blur(); // Remove focus from the cell after submission
+            }
+            
+        });
+
+        row.appendChild(statValueCell);
+        tbody.appendChild(row);
+    });
+
+    table.appendChild(tbody);
+    container.appendChild(table);
 }
-function modifyStats(character){}
-function saveStats(character){}
+
+function modifyStats(character,stat,newValue)
+{
+    character[stat] = newValue;
+    for(i=0; i<loadedDeck.length; i++){
+        if(loadedDeck[i].name=== character.name)
+            {
+                loadedDeck[i]=character;
+            }
+    }
+    //console.log(loadedDeck);
+}
+
+function saveStats()
+{
+    localStorage.setItem("charactersDeck", JSON.stringify(loadedDeck)); 
+}
 
 function displayInfo(character){
-    console.log("here I am!");
     let container = document.getElementById("character_info_container");
     let newLore = document.createElement("p");
     switch(character.name){
@@ -85,6 +157,5 @@ function displayInfo(character){
             break;
     }
     container.innerHTML = "<h3>Info</h3>";
-    console.log("i am out");
     container.appendChild(newLore);
 }

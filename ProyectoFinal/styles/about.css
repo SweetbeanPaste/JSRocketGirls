@@ -1,3 +1,7 @@
+h3
+{
+    font-size: 30px;
+}
 .cardCarrusel{
     display: flex;
     align-items: center;
@@ -7,31 +11,56 @@
 }
 .infoContainer
 {
-    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
     background-color: lightcoral;
 }
 /* Table for stats */
 table {
+	width: 800px;
 	border-collapse: collapse;
-    font-family: Tahoma, Geneva, sans-serif;
+	overflow: hidden;
+	box-shadow: 0 0 20px rgba(0,0,0,0.1);
 }
-table td {
+
+th,
+td {
 	padding: 15px;
+	background-color: rgba(255,255,255,0.2);
+	color: #fff;
 }
-table thead td {
-	background-color: #54585d;
-	color: #ffffff;
-	font-weight: bold;
-	font-size: 13px;
-	border: 1px solid #54585d;
+
+th {
+	text-align: left;
 }
-table tbody td {
-	color: #636363;
-	border: 1px solid #dddfe1;
+
+thead {
+	th {
+		background-color: #55608f;
+	}
 }
-table tbody tr {
-	background-color: #f9fafb;
-}
-table tbody tr:nth-child(odd) {
-	background-color: #ffffff;
+
+tbody {
+	tr {
+		&:hover {
+			background-color: rgba(255,255,255,0.3);
+		}
+	}
+	td {
+		position: relative;
+		&:hover {
+			&:before {
+				content: "";
+				position: absolute;
+				left: 0;
+				right: 0;
+				top: -9999px;
+				bottom: -9999px;
+				background-color: rgba(255,255,255,0.2);
+				z-index: -1;
+			}
+		}
+	}
 }
