@@ -1,7 +1,8 @@
 //Creating characters from deck
 //# PROBLEM UNSOLVE: when switches tabs to "about" this process will be executed again
 const names = ["Allen","Dinara","Eliv","Urumi","Clith","Dansu"];
-let charactersDeck = [];
+const charactersDeck_CN =[]; //this one works as a list of all current cards in game
+let charactersDeck = []; //While this one reflects the Main desk on screen
 
 document.addEventListener('DOMContentLoaded', function() {   
 let section = document.getElementsByClassName('carddeck_Section'); 
@@ -26,10 +27,13 @@ for (i = 0 ; i<=5 ;i++) {
     section[0].appendChild(newCard);
     
     charactersDeck.push(character);
+    charactersDeck_CN.push(character);
+
     createClickListener(newCard,character);
-    //console.log(character); 
 } 
-//console.log(charactersDeck);
+//save the deck+stats to read &Modify later
+console.log(charactersDeck_CN);
+localStorage.setItem("charactersDeck", JSON.stringify(charactersDeck_CN)); 
 })
 
 function getRandom() {
@@ -65,6 +69,7 @@ function createClickListener(newCard,character)
         }
     });
 }
+
 function updateMainDeck(character){
     //Removes available character from Main deck array
     for(i=0;i<=charactersDeck.length;i++){
@@ -91,7 +96,7 @@ function ready()
     }
     let section = document.getElementsByClassName('carddeck_Section')[0]; 
     let msj = document.createElement("p");
-    msj.textContent="There is no mode cards! Ready to play? Click Start!";
+    msj.textContent="There is no more cards! Ready to play? Click Start!";
     msj.style.color="white";
     section.appendChild(msj);
 
@@ -104,4 +109,9 @@ function removeMainDeck(i){
         if (cardInMainDeck) {
             cardInMainDeck.remove(); // Remove from the main deck
         }
+}
+
+function changeCard()
+{
+
 }

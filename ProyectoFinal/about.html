@@ -5,11 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Epic Card Battle! Character Info</title>
     <link rel="icon" type="image/x-icon" href="img/logoCard.ico">
+    <script src="scripts/index.js"></script>
     <script src="scripts/about.js"></script>
     <!--CSS files for styles-->
     <link rel="stylesheet" href="styles/CardStyles.css">
     <link rel="stylesheet" href="styles/mainPage.css">
     <link rel="stylesheet" href="styles/dinamic.css">
+    <link rel="stylesheet" href="styles/about.css">
 </head>
 <body>
     <header>
@@ -24,21 +26,20 @@
         </nav>
     </header>
     <section>
-        Character Info
+        <h2>Character Info</h2>
         <p>Click on the character to display their informatiom</p>
         <section class="character_info_carrusel">
-            <img src="img/Allen.png" class="pjCard" id="PjAllen">
-            <img src="img/Dinara.png" class="pjCard" id="PjDinara">
-            <img src="img/Eliv.png" class="pjCard" id="PjEliv">
-            <img src="img/Urumi.png" class="pjCard" id="PjUrumi">
-            <img src="img/Clith.png" class="pjCard" id="PjClith">
-            <img src="img/Dansu.png" class="pjCard" id="PjDansu">
-
-            <div>
-                stats<!-- here a box with modifiable stats health, attack and defense -->
+            <div id="cardImgs" class="cardCarrusel">
+                <!--Here images are inserted-->
             </div>
-            <div>
-                info
+            <br>
+            <div id = "character_statTable" class="infoContainer">
+                <h3 >Current Stats</h3>
+                <!-- here a box with modifiable stats health, attack and defense -->
+            </div>
+            <hr>
+            <div id="character_info_container" class="infoContainer">
+                <h3>Info</h3>
             </div>
         </section>
         

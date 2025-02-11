@@ -1,4 +1,9 @@
-1. Add click func to add to deck
 2. delete func (maybe X animation on top of selected card)
 3. soft pc cards
 4. simulate fight (add up the 3 stats from the 3 cards and biggest one win i guess)
+
+//about 10 feb 2025
+Al hacer click en una imagen va a desplegar la stats(js) y el lore(js switch)
+-> Stats tiene que permitir click (mouselistener) para editar desde teclado stats Y GUARDAR
+-> eso guardado index.js tiene que SABER leerlo con la info updated y aplicarlo
+osea tiene que skippear la creacion del obj (agregue un if)
