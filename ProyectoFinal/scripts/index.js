@@ -1,7 +1,7 @@
 //# PROBLEM UNSOLVE: when switches tabs to "about" this process will be executed again
 const names = ["Allen","Dinara","Eliv","Urumi","Clith","Dansu"];
 const charactersDeck_CN =[]; //this one works as a list of all current cards in game
-let charactersDeck = []; //While this one reflects the Main desk on screen
+let charactersDeck = []; //While this one reflects the Main deck on screen
 
 document.addEventListener('DOMContentLoaded', function() {   
     //createDeck
@@ -141,7 +141,7 @@ function ready()
             msj.textContent="There is no more cards!";
             msj.style.color="white";
             section.appendChild(msj);
-            startAnimation();
+            startAnimation();compareStats();displayWinner();
         }
     }else{
         alert("You must select up to 3 cards!");
@@ -199,8 +199,22 @@ function startAnimation()
 //Battler Simulation
 function getPlayerStats()
 {
-
+    let totalHealth=0;
+    let totalDmg=0;
+    let totalShield=0;
+    for(let i=0 ; i<charactersDeck_CN.length ; i++)
+        {
+            totalHealth+=charactersDeck_CN[i].health;
+            totalDmg+=charactersDeck_CN[i].damage;
+            totalShield+=charactersDeck_CN[i].shield;
+        } 
+    let enemyStats = getPcStats();
+    totalHealth-=enemyStats[0];
+    totalDmg-=enemyStats[1];
+    totalShield-=enemyStats[2];    
+    return [totalHealth,totalDmg,totalShield];
 }
+
 function getPcStats()
 {
     let totalHealth=0;
@@ -212,22 +226,49 @@ function getPcStats()
             totalDmg+=charactersDeck[i].damage;
             totalShield+=charactersDeck[i].shield;
         }
-        console.log(totalDmg,totalHealth,totalShield);
-}
-
-function collectStats()
-{
-
-
+    return [totalHealth,totalDmg,totalShield];
 }
 
 function compareStats()
 {
+    let playerCounter=0;let pcCounter=0;
+    let player = getPlayerStats();
+    let pc = getPcStats();
 
+    if(player[0]>pc[0]){
+        playerCounter+=1;
+    }else{
+        pcCounter+=1;
+    }
+
+    if(player[1]>pc[1]){
+        playerCounter+=1;
+    }else{
+        pcCounter+=1;
+    }
+
+    if(player[2]>pc[2]){
+        playerCounter+=1;
+    }else{
+        pcCounter+=1;
+    }
+    console.log("player",player);console.log("enemy",pc);
+    console.log(playerCounter,"and",pcCounter)
+    return [playerCounter,pcCounter];
 }
 
 function displayWinner()
 {
+    let stats = compareStats();
+    if(stats[0]>stats[1]){
+        console.log("Congrats you won!")
+        return true; //player Won
+    }else{
+        console.log("Boo Hoo you lost!")
+        return false;//Pc won
+    }
+    console.log("There was a tie!!");
+    
 
 }
 

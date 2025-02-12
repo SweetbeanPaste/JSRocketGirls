@@ -1,12 +1,12 @@
 1. MOD STATS AHGGGG
 2. simulate fight (add up the 3 stats from the 3 cards and biggest one win i guess)
 
-//about 10 feb 2025
+//about 11 feb 2025
 Current NEEDS:
 Guardado.
--> Stats tiene que permitir click (mouselistener) para editar desde teclado stats Y GUARDAR
--> eso guardado index.js tiene que SABER leerlo con la info updated y aplicarlo
-osea tiene que skippear la creacion del obj (agregue un if)
+-> about editar y guardar stats
+-> index crear SI NO HAY leer SI HAY starts => cargar esas stats
+-> terminar silumlacion combate
 
 ###Things i should probably refine at the end
 -> validations for modify name only string/ stats only number
