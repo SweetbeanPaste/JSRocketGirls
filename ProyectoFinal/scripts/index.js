@@ -5,44 +5,45 @@ const charactersDeck_CN =[]; //this one works as a list of all current cards in 
 let charactersDeck = []; //While this one reflects the Main desk on screen
 
 document.addEventListener('DOMContentLoaded', function() {   
-let section = document.getElementsByClassName('carddeck_Section'); 
-//section=section.children[0].children
+    //createDeck
+    createDeck();
 
-for (i = 0 ; i<=5 ;i++) { 
-    //Creating the deck
-    let newCard = document.createElement("img");
-    newCard.src="img/"+names[i]+".png";
-    newCard.classList.add("pjCard");
-    newCard.id="Pj"+names[i];
-
-    //Creating Object
-    let character = {  // each cycle creates a new one
-        name: names[i],
-        health: getRandom(),
-        damage: getRandom(),
-        shield: getRandom(),
-        imgurl:"img/"+names[i]+".png"
-    };
-    //Assigning powers! & addint to screen
-    newCard.classList.add("slide-top");
-    section[0].appendChild(newCard);
-    
-    charactersDeck.push(character);
-    charactersDeck_CN.push(character);
-
-    createClickListener(newCard,character);
-} 
-//save the deck+stats to read &Modify later
-console.log(charactersDeck_CN);
-localStorage.setItem("charactersDeck", JSON.stringify(charactersDeck_CN)); 
-})
+    //save the deck+stats to read &Modify later
+    localStorage.setItem("charactersDeck", JSON.stringify(charactersDeck_CN)); 
+    })
 
 function loadDeck(){
 
 }
 
 function createDeck(){
-    
+    let section = document.getElementsByClassName('carddeck_Section'); 
+
+    for (i = 0 ; i<=5 ;i++) { 
+        //Creating the deck
+        let newCard = document.createElement("img");
+        newCard.src="img/"+names[i]+".png";
+        newCard.classList.add("pjCard");
+        newCard.id="Pj"+names[i];
+
+        //Creating Object
+        let character = {  // each cycle creates a new one
+            name: names[i],
+            health: getRandom(),
+            damage: getRandom(),
+            shield: getRandom(),
+            imgurl:"img/"+names[i]+".png"
+        };
+        //Assigning powers! & addint to screen
+        newCard.classList.add("slide-top");
+        section[0].appendChild(newCard);
+        
+        charactersDeck.push(character);
+        charactersDeck_CN.push(character);
+
+        createClickListener(newCard,character);
+    }
+    console.log(charactersDeck_CN);
 }
 
 function getRandom() {
@@ -71,6 +72,8 @@ function createClickListener(newCard,character)
             selectedCard.id = "Pj" + character.name;
             // add Class for animation
             selectedCard.classList.add("slide-top");
+            // add listener to delete from player's deck
+            playerListener(selectedCard,character)
             // Append to player deck
             playerDeck.appendChild(selectedCard);
         } else {
@@ -80,12 +83,40 @@ function createClickListener(newCard,character)
 }
 
 function updateMainDeck(character){
-    //Removes available character from Main deck array
+    //Removes available character from Main deck ARRAY
     for(i=0;i<=charactersDeck.length;i++){
         if(charactersDeck[i]===character){
             charactersDeck.splice(i,1)
         }
     }
+}
+
+function addCardMainDeck(card)
+{
+    let section = document.getElementsByClassName('carddeck_Section'); 
+    //Creating the deck
+    let newCard = document.createElement("img");
+    newCard.src="img/"+card.name+".png";
+    newCard.classList.add("pjCard");
+    newCard.id="Pj"+card.name;
+
+    //Creating Object
+    let character = {  // each cycle creates a new one
+        name: card.name,
+        health: card.health,
+        damage: card.damage,
+        shield: card.shield,
+        imgurl:"img/"+card.name+".png"
+    };
+    //Assigning powers! & addint to screen
+    newCard.classList.add("slide-top");
+    section[0].appendChild(newCard);
+    
+    charactersDeck.push(character);
+    //charactersDeck_CN.push(character);
+
+    createClickListener(newCard,character);
+    console.log("I am here!",charactersDeck);
 }
 
 function ready()
@@ -120,14 +151,18 @@ function removeMainDeck(i){
         let cardInMainDeck = document.getElementById(cardId); // Get the actual card in the main deck
 
         if (cardInMainDeck) {
-            cardInMainDeck.remove(); // Remove from the main deck
+            cardInMainDeck.remove(); // Remove from the main deck on screen
         }
 }
 
-function changeCard(card,character)
+function playerListener(selectedCard,character)
 {
     //deletes card from player's deck if click on -> return to the main deck
-    card.addEventListener("click",function(){});
+    selectedCard.addEventListener("click",function()
+    {
+        addCardMainDeck(character);
+        selectedCard.remove();
+    });
 
 }
 
