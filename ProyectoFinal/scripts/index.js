@@ -91,23 +91,27 @@ function updateMainDeck(character){
 function ready()
 {
     //Once the player is ready the remaining card will automatically go to the Pc deck
-    let pcDeck = document.getElementById("currentPCdeck");
-    for(i=0 ; i<charactersDeck.length ; i++) {
-        removeMainDeck(i);
-        let newPcCard = document.createElement("img");
-        newPcCard.src = charactersDeck[i].imgurl;
-        newPcCard.classList.add("pjCard");
-        newPcCard.id = "Pj" + charactersDeck[i].name;       
-        // Remove card from main deck
-        newPcCard.remove();
-        // Append to player deck       
-        pcDeck.appendChild(newPcCard);        
+    if(playerDeckFull()){
+        let pcDeck = document.getElementById("currentPCdeck");
+        for(i=0 ; i<charactersDeck.length ; i++) {
+            removeMainDeck(i);
+            let newPcCard = document.createElement("img");
+            newPcCard.src = charactersDeck[i].imgurl;
+            newPcCard.classList.add("pjCard");
+            newPcCard.id = "Pj" + charactersDeck[i].name;       
+            // Remove card from main deck
+            newPcCard.remove();
+            // Append to player deck       
+            pcDeck.appendChild(newPcCard);        
+        }
+        let section = document.getElementsByClassName('carddeck_Section')[0]; 
+        let msj = document.createElement("p");
+        msj.textContent="There is no more cards! Ready to play? Click Start!";
+        msj.style.color="white";
+        section.appendChild(msj);
+    }else{
+        alert("You must select up to 3 cards!");
     }
-    let section = document.getElementsByClassName('carddeck_Section')[0]; 
-    let msj = document.createElement("p");
-    msj.textContent="There is no more cards! Ready to play? Click Start!";
-    msj.style.color="white";
-    section.appendChild(msj);
 
 }
 
@@ -120,7 +124,20 @@ function removeMainDeck(i){
         }
 }
 
-function changeCard()
+function changeCard(card,character)
 {
+    //deletes card from player's deck if click on -> return to the main deck
+    card.addEventListener("click",function(){});
 
+}
+
+// Validations
+function playerDeckFull()
+{   //Checks if the player's deck is complete before "ready" is click
+    let playerDeck = document.getElementById("currentPYdeck");
+    if (playerDeck.children.length === 3) {
+        return true;
+    }else{
+        return false;
+    }
 }

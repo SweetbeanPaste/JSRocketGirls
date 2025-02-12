@@ -1,9 +1,16 @@
-2. delete func (maybe X animation on top of selected card)
-3. soft pc cards
-4. simulate fight (add up the 3 stats from the 3 cards and biggest one win i guess)
+1. delete func (maybe X animation on top of selected card)
+2. simulate fight (add up the 3 stats from the 3 cards and biggest one win i guess)
 
 //about 10 feb 2025
-Al hacer click en una imagen va a desplegar la stats(js) y el lore(js switch)
+Current NEEDS:
+Guardado.
 -> Stats tiene que permitir click (mouselistener) para editar desde teclado stats Y GUARDAR
 -> eso guardado index.js tiene que SABER leerlo con la info updated y aplicarlo
 osea tiene que skippear la creacion del obj (agregue un if)
+
+###Things i should probably refine at the end
+-> validations for modify name only string/ stats only number
+-> player must select 3 cards before start(yet) or ready(done)
+____________________________________________________________
+final steppies
+you may use your color pallete to make it pretty

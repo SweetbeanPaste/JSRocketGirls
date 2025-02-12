@@ -66,7 +66,7 @@ function displayStats(character){
 
     // Create table header
     let headerRow = document.createElement("tr");
-    let headers = ["Stats", "#"];
+    let headers = ["Stats", "# 0-10"];
     headers.forEach(headerText => {
         let header = document.createElement("th");
         header.textContent = headerText;
@@ -77,6 +77,7 @@ function displayStats(character){
 
     // Create table body
     let stats = [
+        { name: "Name", value: character.name},
         { name: "Health", value: character.health },
         { name: "Damage", value: character.damage },
         { name: "Shield", value: character.shield }
