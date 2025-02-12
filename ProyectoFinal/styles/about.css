@@ -1,13 +1,19 @@
 h3
 {
+	padding:10px;
+	color:white;
     font-size: 30px;
+}
+p{
+	color:white;
 }
 .cardCarrusel{
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 10px;
-    background-color: palevioletred;
+    background-image: linear-gradient(45deg, #C6E6E3 0%, #81BFB7  100%, #A5CFB2  75%,#D4EFD4 100%);
+	border-radius: 25px;
 }
 .infoContainer
 {
@@ -15,12 +21,14 @@ h3
     align-items: center;
     justify-content: space-between;
     padding: 10px;
-    background-color: lightcoral;
+    background-image: linear-gradient(45deg, #7E2A53 0%, #461D3A  51%, #BA71A2  100%);
+	border-radius: 15px 50px;
 }
 /* Table for stats */
 table {
 	width: 800px;
 	border-collapse: collapse;
+	border-radius: 15px 50px;
 	overflow: hidden;
 	box-shadow: 0 0 20px rgba(0,0,0,0.1);
 }
@@ -38,7 +46,7 @@ th {
 
 thead {
 	th {
-		background-color: #55608f;
+		background-color: #7E2A53;
 	}
 }
 

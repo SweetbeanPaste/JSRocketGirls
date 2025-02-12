@@ -27,7 +27,7 @@
 
     <section> 
         <h2 name="LoreTitle">Lore...</h2>
-        <div class="gameContext">
+        <div class="common_Sec">
             <p>You have find yourself in another dimension! A wasteland of sorts, 
             it is plagued with strange entities HIGHLY hostily. In order to stay safe
             you must play your card wisely, and let the entities destroy themselves instead 
@@ -38,7 +38,7 @@
     </section>
     <section>
         <h2 name="GameRulesTitle">Game Rules</h2>
-        <ol class="ruleList">
+        <ol class="common_Sec">
             <li class="ruleBullets">Player can choose 3 card out of the 6 characters</li>
             <li class="ruleBullets">You may delete a card from your deck by clicking on it</li>
             <li class="ruleBullets">Player can modify character stats (although that is cheating)</li>
@@ -53,6 +53,12 @@
         </div>        
     </section>
     <h2 style="text-align:center;" >Select your team ! Get ready to Fight.</h2>
+
+    <!-- <div class="start-animation">
+        <div class="bar"></div>
+        <div class="start-text">STARTS</div>
+    </div> -->
+
     <section class="deck_selection"> 
 
         <div id="playerDeck" class="gameDeck">
@@ -62,8 +68,8 @@
             </div>                
         </div>
         <div id="btn_section" class="btnSpace">
-            <button class="startbtn" onclick="ready()">Ready</button>
-            <button class="startbtn">Start</button>
+            <button id = "readyBtn" class="startbtn" onclick="ready()">Ready</button>
+            
         </div>
 
         <div id="pcDeck" class="gameDeck">
@@ -74,7 +80,7 @@
         </div>
         
     </section>
-    <br><br><hr>
+    <hr>
     <footer>
         @JennyKing | Feb_2025 JS_RocketGirls
         <br>
@@ -83,3 +89,5 @@
     
 </body>
 </html>
+
+<!-- <button id ="btnStart" class="startbtn">Start</button> -->

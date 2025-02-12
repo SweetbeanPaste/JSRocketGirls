@@ -1,4 +1,4 @@
-1. delete func (maybe X animation on top of selected card)
+1. MOD STATS AHGGGG
 2. simulate fight (add up the 3 stats from the 3 cards and biggest one win i guess)
 
 //about 10 feb 2025
@@ -14,3 +14,6 @@ osea tiene que skippear la creacion del obj (agregue un if)
 ____________________________________________________________
 final steppies
 you may use your color pallete to make it pretty
+
+!!! MIGHT REMOVE START BUTTON!
+so when cards sort to the pc deck it simulartes de battle right away

@@ -1,4 +1,3 @@
-//Creating characters from deck
 //# PROBLEM UNSOLVE: when switches tabs to "about" this process will be executed again
 const names = ["Allen","Dinara","Eliv","Urumi","Clith","Dansu"];
 const charactersDeck_CN =[]; //this one works as a list of all current cards in game
@@ -52,7 +51,6 @@ function getRandom() {
     return number;
   }
 
-// Click Func to modify and Delete
 function createClickListener(newCard,character)
 {
     newCard.addEventListener("click",function(){
@@ -71,7 +69,9 @@ function createClickListener(newCard,character)
             selectedCard.classList.add("pjCard");
             selectedCard.id = "Pj" + character.name;
             // add Class for animation
+            selectedCard.classList.add("redOverlay");
             selectedCard.classList.add("slide-top");
+            selectedCard.classList.add("traceX");
             // add listener to delete from player's deck
             playerListener(selectedCard,character)
             // Append to player deck
@@ -111,10 +111,8 @@ function addCardMainDeck(card)
     //Assigning powers! & addint to screen
     newCard.classList.add("slide-top");
     section[0].appendChild(newCard);
-    
+    //Save in current available deck
     charactersDeck.push(character);
-    //charactersDeck_CN.push(character);
-
     createClickListener(newCard,character);
     console.log("I am here!",charactersDeck);
 }
@@ -134,12 +132,17 @@ function ready()
             newPcCard.remove();
             // Append to player deck       
             pcDeck.appendChild(newPcCard);        
-        }
+        }    
         let section = document.getElementsByClassName('carddeck_Section')[0]; 
-        let msj = document.createElement("p");
-        msj.textContent="There is no more cards! Ready to play? Click Start!";
-        msj.style.color="white";
-        section.appendChild(msj);
+        if(section.childElementCount>1){
+            //idk make the carddeck section flash lol
+        }else{
+            let msj = document.createElement("p");
+            msj.textContent="There is no more cards!";
+            msj.style.color="white";
+            section.appendChild(msj);
+            startAnimation();
+        }
     }else{
         alert("You must select up to 3 cards!");
     }
@@ -163,6 +166,68 @@ function playerListener(selectedCard,character)
         addCardMainDeck(character);
         selectedCard.remove();
     });
+
+}
+//start animation
+
+function startAnimation()
+{
+    //instead I create the button here, and it comes alive after ready is click!
+    setTimeout(() => {
+        const startAnimation = document.createElement("div");
+        startAnimation.classList.add("start-animation");
+
+        const bar = document.createElement("div");
+        bar.classList.add("bar");
+
+        const startText = document.createElement("div");
+        startText.classList.add("start-text");
+        startText.textContent = "START!!";
+
+        startAnimation.appendChild(bar);
+        startAnimation.appendChild(startText);
+
+        document.body.appendChild(startAnimation);
+
+        // Remove the animation after 3 seconds
+        setTimeout(() => {
+          startAnimation.remove();
+        }, 3000);
+      }, 1000); // Wait 2 seconds before executing the animation
+    
+}
+//Battler Simulation
+function getPlayerStats()
+{
+
+}
+function getPcStats()
+{
+    let totalHealth=0;
+    let totalDmg=0;
+    let totalShield=0;
+    for(let i=0 ; i<charactersDeck.length ; i++)
+        {
+            totalHealth+=charactersDeck[i].health;
+            totalDmg+=charactersDeck[i].damage;
+            totalShield+=charactersDeck[i].shield;
+        }
+        console.log(totalDmg,totalHealth,totalShield);
+}
+
+function collectStats()
+{
+
+
+}
+
+function compareStats()
+{
+
+}
+
+function displayWinner()
+{
 
 }
 
