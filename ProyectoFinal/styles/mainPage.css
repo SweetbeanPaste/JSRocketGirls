@@ -1,8 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Gaegu&display=swap');
+
 body {
     font-family: 'Gaegu', bold;
     font-size: 36px;
-    margin: 10px 96px;
+    margin: 10px 30px;
     padding: 5px;
     background-image: linear-gradient(45deg, #9E93E6 0%, #DEBFF2  51%, #BA71A2  100%);
 }
@@ -11,11 +12,12 @@ p{
 }
 footer{
     margin-top:100px;
-    padding: 50px;
+    padding: 30px;
     border-radius: 15px 50px 30px 5px;
     background-image: linear-gradient(45deg, #C6E6E3 0%, #81BFB7  100%, #A5CFB2  75%,#D4EFD4 100%);
 }
 h2{
+    font-size: 35px;
     color: white;
 }
 
@@ -94,7 +96,8 @@ a:hover{
 /* Sec */
 .common_Sec{
     color:white;
-    padding: 50px;
+    padding: 10px;
+    font-size: 25px;
     background-image: linear-gradient(45deg, #7E2A53 0%, #461D3A  51%, #BA71A2  100%);
     border-radius: 15px 50px 30px 5px;
 }
