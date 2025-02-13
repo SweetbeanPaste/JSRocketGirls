@@ -17,7 +17,7 @@ it could use some modulatity to reuse certain processes and shorten functions.
 2. Saving a deck is done using "localStorage", there is probably a better method such as using node.js 
 3. The naming could be more solid, for instante either use "_" or camelCase but NOT both.
 4. The game could use a restart button to start another game once finished, instead of refreshing the page.
-
+5. I was not aware using "px" would make the page stiff when adapting to screen. 
 
 ###Things i should probably refine at the end
 -> MODIFY: validations for modify name only string / stats only number

@@ -367,7 +367,7 @@ function displayWinner()
         p.style.color="red";
     }
     p.style.alignContent="center";
-    p.style.fontSize = "110px";
+    p.style.fontSize = "50px";
 
     
         section.appendChild(p);}, 4000);
