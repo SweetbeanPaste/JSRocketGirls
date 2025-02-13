@@ -4,8 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
     //Load deck
     const storedDeck = localStorage.getItem("charactersDeck");
     if (storedDeck) {
-        loadedDeck = JSON.parse(storedDeck);
-        //console.log("this",loadedDeck); // The deck is now available!
+        loadedDeck = JSON.parse(storedDeck);        
     }
     // Access the section
     let section = document.getElementsByClassName('character_info_carrusel')[0];  
@@ -80,7 +79,7 @@ function displayStats(character){
 
         // Add input event listener for real-time updates
         statValueCell.addEventListener("input", (event) => {
-            console.log("over her",character, stat.name, event.target.textContent);
+            console.log("Modification:",character, stat.name, event.target.textContent);
             modifyStats(character, stat.name.toLowerCase(), event.target.textContent);
         });
 

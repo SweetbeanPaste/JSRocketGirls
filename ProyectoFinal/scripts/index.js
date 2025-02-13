@@ -57,7 +57,6 @@ function loadDeck() {
         createClickListener(newCard,character);
         
     }
-    console.log(charactersDeck_CN);
 }
 
 function createDeck(){
@@ -87,7 +86,7 @@ function createDeck(){
 
         createClickListener(newCard,character);
     }
-    console.log(charactersDeck_CN);
+    console.log("Create deck:",charactersDeck_CN);
 }
 
 function getRandom() {
@@ -158,8 +157,7 @@ function addCardMainDeck(card)
     section[0].appendChild(newCard);
     //Save in current available deck
     charactersDeck.push(character);
-    createClickListener(newCard,character);
-    console.log("I am here!",charactersDeck);
+    createClickListener(newCard,character);    
 }
 
 function ready()
@@ -265,7 +263,7 @@ function getPcStats()
     let totalHealth=0;
     let totalDmg=0;
     let totalShield=0;
-    console.log("PC DECK",charactersDeck);
+    
     for(let i=0 ; i<charactersDeck.length ; i++)
         {
             totalHealth+=charactersDeck[i].health;
@@ -298,8 +296,7 @@ function compareStats()
     }else{
         pcCounter+=1;
     }
-    console.log("player",player);console.log("enemy",pc);
-    console.log(playerCounter,"and",pcCounter)
+    console.log("player",player);console.log("enemy",pc);    
     return [playerCounter,pcCounter];
 }
 
