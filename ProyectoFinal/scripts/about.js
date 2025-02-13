@@ -80,6 +80,7 @@ function displayStats(character){
 
         // Add input event listener for real-time updates
         statValueCell.addEventListener("input", (event) => {
+            console.log("over her",character, stat.name, event.target.textContent);
             modifyStats(character, stat.name.toLowerCase(), event.target.textContent);
         });
 
@@ -87,6 +88,7 @@ function displayStats(character){
         statValueCell.addEventListener("keydown", (event) => {
             if (event.key === "Enter") {
                 event.preventDefault(); // Prevent default behavior (e.g., newline)
+                let lc=stat.name.toLowerCase();
                 modifyStats(character, stat.name.toLowerCase(), event.target.textContent);
                 event.target.blur(); // Remove focus from the cell after submission
             }
@@ -103,14 +105,14 @@ function displayStats(character){
 
 function modifyStats(character,stat,newValue)
 {
-    character[stat] = newValue;
+    character[stat] = parseInt(newValue);
     for(i=0; i<loadedDeck.length; i++){
         if(loadedDeck[i].name=== character.name)
             {
                 loadedDeck[i]=character;
             }
     }
-    //console.log(loadedDeck);
+    saveStats();
 }
 
 function saveStats()

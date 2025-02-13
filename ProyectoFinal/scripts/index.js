@@ -1,18 +1,63 @@
 //# PROBLEM UNSOLVE: when switches tabs to "about" this process will be executed again
 const names = ["Allen","Dinara","Eliv","Urumi","Clith","Dansu"];
-const charactersDeck_CN =[]; //this one works as a list of all current cards in game
+let charactersDeck_CN =[]; //this one works as a list of all current cards in game
 let charactersDeck = []; //While this one reflects the Main deck on screen
+
 
 document.addEventListener('DOMContentLoaded', function() {   
     //createDeck
+    if(checkForDeck()){
+        loadDeck();
+    }else{
     createDeck();
+    }
 
     //save the deck+stats to read &Modify later
     localStorage.setItem("charactersDeck", JSON.stringify(charactersDeck_CN)); 
     })
 
-function loadDeck(){
+function checkForDeck()
+{
+    const storedDeck = localStorage.getItem("charactersDeck");
+    if (storedDeck.length>0) {
+        // If a deck exists, load it
+        charactersDeck_CN = JSON.parse(storedDeck);
+        charactersDeck = [...charactersDeck_CN]; // Copy the loaded deck to the main deck
+        console.log("Deck loaded from localStorage:", charactersDeck);  
+        return true;
+    }
+    return false;
+    
+}
 
+function loadDeck() {
+    let section = document.getElementsByClassName('carddeck_Section'); 
+    charactersDeck=[];
+    for (i = 0 ; i<charactersDeck_CN.length ;i++) { 
+        //Creating the deck
+        let newCard = document.createElement("img");
+        newCard.src="img/"+charactersDeck_CN[i].name+".png";
+        newCard.classList.add("pjCard");
+        newCard.id="Pj"+charactersDeck_CN[i].name;
+
+        //Creating Object
+        let character = {  // each cycle creates a new one
+            name: charactersDeck_CN[i].name,
+            health: charactersDeck_CN[i].health,
+            damage: charactersDeck_CN[i].damage,
+            shield: charactersDeck_CN[i].shield,
+            imgurl:"img/"+charactersDeck_CN[i].name+".png"
+        };
+        //Assigning powers! & addint to screen
+        newCard.classList.add("slide-top");
+        section[0].appendChild(newCard);   
+
+        charactersDeck.push(character);        
+
+        createClickListener(newCard,character);
+        
+    }
+    console.log(charactersDeck_CN);
 }
 
 function createDeck(){
@@ -130,7 +175,7 @@ function ready()
             newPcCard.id = "Pj" + charactersDeck[i].name;       
             // Remove card from main deck
             newPcCard.remove();
-            // Append to player deck       
+            // Append to pc deck       
             pcDeck.appendChild(newPcCard);        
         }    
         let section = document.getElementsByClassName('carddeck_Section')[0]; 
@@ -141,7 +186,7 @@ function ready()
             msj.textContent="There is no more cards!";
             msj.style.color="white";
             section.appendChild(msj);
-            startAnimation();compareStats();displayWinner();
+            startAnimation();displayWinner();
         }
     }else{
         alert("You must select up to 3 cards!");
@@ -220,6 +265,7 @@ function getPcStats()
     let totalHealth=0;
     let totalDmg=0;
     let totalShield=0;
+    console.log("PC DECK",charactersDeck);
     for(let i=0 ; i<charactersDeck.length ; i++)
         {
             totalHealth+=charactersDeck[i].health;
@@ -257,19 +303,85 @@ function compareStats()
     return [playerCounter,pcCounter];
 }
 
+function createStatTable(name,array)
+{
+    let section = document.getElementById("finalResults");
+    
+    let table = document.createElement("table");
+    let thead = document.createElement("thead");
+    let tbody = document.createElement("tbody");
+
+    // Create table header
+    let headerRow = document.createElement("tr");
+    let headers = [name, "#"];
+    headers.forEach(headerText => {
+        let header = document.createElement("th");
+        header.textContent = headerText;
+        headerRow.appendChild(header);
+    });
+    thead.appendChild(headerRow);
+    table.appendChild(thead);
+
+    // Create table body
+    let stats = [
+        { name: "Total Health", value: array[0]},
+        { name: "Total Damage", value: array[1] },
+        { name: "Total Shield", value: array[2] }        
+    ];
+
+    stats.forEach(stat => {
+        let row = document.createElement("tr");
+
+        let statNameCell = document.createElement("td");
+        statNameCell.textContent = stat.name;
+        row.appendChild(statNameCell);
+
+        let statValueCell = document.createElement("td");
+        statValueCell.textContent = stat.value;    
+        row.appendChild(statValueCell);
+        tbody.appendChild(row);
+    });
+
+    table.appendChild(tbody);
+    section.appendChild(table);
+}
+
+function showCaseStats(){
+    createStatTable("Player",getPlayerStats());
+    createStatTable("Pc",getPcStats());
+    
+}
+
+
 function displayWinner()
 {
-    let stats = compareStats();
-    if(stats[0]>stats[1]){
-        console.log("Congrats you won!")
-        return true; //player Won
-    }else{
-        console.log("Boo Hoo you lost!")
-        return false;//Pc won
-    }
-    console.log("There was a tie!!");
-    
+    setTimeout(function () {
+    let section = document.getElementById("finalResults");
+    let p = document.createElement("p");
 
+    let stats = compareStats();
+    showCaseStats();
+    if(stats[0]>stats[1]){
+        p.textContent ="Congrats you won!";
+        p.style.color="green";
+        runConfetti();
+    }else{
+        p.textContent ="Boo Hoo you lost!";
+        p.style.color="red";
+    }
+    p.style.alignContent="center";
+    p.style.fontSize = "110px";
+
+    
+        section.appendChild(p);}, 4000);
+}
+
+function runConfetti() {
+    confetti({
+        particleCount: 100,
+        spread: 70,
+        origin: { y: 0.6 }
+    });
 }
 
 // Validations
@@ -282,3 +394,5 @@ function playerDeckFull()
         return false;
     }
 }
+
+// Clear localStorage when the page is about to reload
