@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function() {
 function checkForDeck()
 {
     const storedDeck = localStorage.getItem("charactersDeck");
-    if (storedDeck.length>0) {
+    if (storedDeck) {
         // If a deck exists, load it
         charactersDeck_CN = JSON.parse(storedDeck);
         charactersDeck = [...charactersDeck_CN]; // Copy the loaded deck to the main deck
