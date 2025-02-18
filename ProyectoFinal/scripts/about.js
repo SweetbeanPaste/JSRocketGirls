@@ -79,19 +79,36 @@ function displayStats(character){
 
         // Add input event listener for real-time updates
         statValueCell.addEventListener("input", (event) => {
-            console.log("Modification:",character, stat.name, event.target.textContent);
-            modifyStats(character, stat.name.toLowerCase(), event.target.textContent);
+            const inputText = event.target.textContent;
+
+            // Use a regular expression to check if the input contains only numbers
+            if (/^\d*$/.test(inputText)) {
+                // If the input is valid (only numbers), update the stats
+                console.log("Modification:", character, stat.name, inputText);
+                modifyStats(character, stat.name.toLowerCase(), inputText);
+            } else {
+                // If the input is invalid (contains non-numeric characters), revert to the previous value
+                event.target.textContent = event.target.textContent.replace(/[^0-9]/g, '');
+            }
         });
 
         // Add keydown event listener for "Enter" key submission
         statValueCell.addEventListener("keydown", (event) => {
             if (event.key === "Enter") {
                 event.preventDefault(); // Prevent default behavior (e.g., newline)
-                let lc=stat.name.toLowerCase();
-                modifyStats(character, stat.name.toLowerCase(), event.target.textContent);
-                event.target.blur(); // Remove focus from the cell after submission
+                const inputText = event.target.textContent;
+
+                // Validate the input before submission
+                if (/^\d+$/.test(inputText)) {
+                    // If the input is valid (only numbers), update the stats
+                    modifyStats(character, stat.name.toLowerCase(), inputText);
+                    event.target.blur(); // Remove focus from the cell after submission
+                } else {
+                    // If the input is invalid, provide feedback to the user
+                    alert("Please enter only numbers.");
+                    event.target.textContent = event.target.textContent.replace(/[^0-9]/g, '');
+                }
             }
-            
         });
 
         row.appendChild(statValueCell);

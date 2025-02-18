@@ -19,8 +19,5 @@ it could use some modulatity to reuse certain processes and shorten functions.
 4. The game could use a restart button to start another game once finished, instead of refreshing the page.
 5. I was not aware using "px" would make the page stiff when adapting to screen. 
 
-###Things i should probably refine at the end
--> MODIFY: validations for modify name only string / stats only number
--> READY: once click dont let the player return cards to deck
 
 
